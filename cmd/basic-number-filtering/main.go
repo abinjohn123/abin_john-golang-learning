@@ -2,14 +2,37 @@ package main
 
 import (
 	"fmt"
-
-	numberFiltering "golang-learning/basic-number-filtering"
+	math "golang-learning/basic-number-filtering"
 )
 
-func main() {
-	numbers := []int{1,2,3,4,5,6,7,8,9,10}
-	
-	evenNumbers := numberFiltering.EvenNumbersFiltering(numbers)
+func getInputNumbers() []int {
+	nums := []int{}
 
-	fmt.Printf("Hi %v", evenNumbers)
+	for i := 0; i < 101; i++ {
+		nums = append(nums, i)
+	}
+
+	return nums
+}
+
+func main() {
+	nums := getInputNumbers()
+
+	// Use helper functions to solve Stories 1 - 6
+	story1 := math.PassesAllConditions(nums, math.IsEven)
+	story2 := math.PassesAllConditions(nums, math.IsOdd)
+	story3 := math.PassesAllConditions(nums, math.IsPrime)
+	story4 := math.PassesAllConditions(nums, math.IsPrime, math.IsOdd)
+	story5 := math.PassesAllConditions(nums, math.IsEven, math.IsGreaterThanN(5))
+	story6 := math.PassesAllConditions(nums, math.IsOdd, math.IsGreaterThanN(10), math.IsMultipleOfN(3))
+
+
+	fmt.Printf("Inputs: %v\n", nums)
+
+	fmt.Printf("Story 1: %v\n\n", story1);
+	fmt.Printf("Story 2: %v\n\n", story2);
+	fmt.Printf("Story 3: %v\n\n", story3);
+	fmt.Printf("Story 4: %v\n\n", story4);
+	fmt.Printf("Story 5: %v\n\n", story5);
+	fmt.Printf("Story 6: %v\n\n", story6);
 }
